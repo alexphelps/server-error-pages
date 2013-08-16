@@ -17,9 +17,10 @@ Easy to use, professional error pages to replace the plaintext error pages that 
 * Isup.me integration on network error pages (502 & 504) for the user to check if the error is just for them
 
 **Error Pages Included**
-* 404 
-* 500
-* 502
-* 503
-* 504
-* Maintenance
+* 403 - Forbidden
+* 404 - Not found
+* 500 - Internal Error
+* 502 - Bad Gateway
+* 503 - Service Unavailable
+* 504 - Gateway Timeout
+* Maintenance 
