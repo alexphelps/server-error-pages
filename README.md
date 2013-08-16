@@ -6,6 +6,7 @@ Easy to use, professional error pages to replace the plaintext error pages that 
 **Quick Details**
 * Unbranded and generic informational text for the user
 * Single HTML files, no directory structure required
+* Javascript to get the current domain for content. 
 * Based on Bootstrap 3
 * Uses Bootstrap CDN from NetDNA
 * Uses Fontawesome CDN from NetDNA
