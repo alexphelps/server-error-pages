@@ -6,9 +6,9 @@ Easy to use, professional error pages to replace the plaintext error pages that 
 ### [Go to the Demo Site](http://alexphelps.github.io/Server-Error-Pages/)
 
 **Quick Details**
-* Unbranded and generic informational text for the user
 * No setup required, all links to or text that includes the domain is generated automatically with javascript. 
 * Single HTML files, no directory structure required.
+* Unbranded but pertinent informational text for the user.
 * Javascript to get the current domain for content. 
 * Based on Bootstrap 3
 * Uses Bootstrap CDN from NetDNA
