@@ -23,3 +23,4 @@ Easy to use, professional error pages to replace the plaintext error pages that 
 * 503
 * 504
 * Maintenance
+* Rate Limit
