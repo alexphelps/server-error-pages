@@ -17,6 +17,7 @@ Easy to use, professional error pages to replace the plaintext error pages that 
 * Isup.me integration on network error pages (502 & 504) for the user to check if the error is just for them
 
 **Error Pages Included**
+* 403
 * 404 
 * 500
 * 502
