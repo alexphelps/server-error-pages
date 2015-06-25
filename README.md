@@ -27,5 +27,5 @@ Easy to use, professional error pages to replace the plaintext error pages that 
 * Rate Limit
 
 ### Getting Started
-**Beginners -** You can find all of the compiled files under the `_site` directory
-**Jekyll Users -** The pages are built using jekyll, so if you're familiar with jekyll just clone the repo and you can easily modify as needed.
+* **Beginners -** You can find all of the compiled files under the `_site` directory
+* **Jekyll Users -** The pages are built using jekyll, so if you're familiar with jekyll just clone the repo and you can easily modify as needed.
