@@ -8,7 +8,7 @@ Easy to use, professional error pages to replace the plaintext error pages that 
 **Quick Details**
 * Unbranded and generic informational text for the user
 * Single HTML files, no directory structure required
-* Javascript to get the current domain for content. 
+* Javascript to get the current domain for content.
 * Based on Bootstrap 3
 * Uses Bootstrap CDN from NetDNA
 * Uses Fontawesome CDN from NetDNA
@@ -18,10 +18,14 @@ Easy to use, professional error pages to replace the plaintext error pages that 
 
 **Error Pages Included**
 * 403
-* 404 
+* 404
 * 500
 * 502
 * 503
 * 504
 * Maintenance
 * Rate Limit
+
+### How To
+**Beginners -** You can find all of the compiled files under the `_site` directory
+**Jekyll Users -** The pages are built using jekyll, so if you're familiar with jekyll just clone the repo and you can easily modify as needed.
