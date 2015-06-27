@@ -41,7 +41,18 @@ body {
 .orange {color:#f0ad4e;}
 .red {color:#d9534f;}
 </style>
-<script src="js/shared.js"></script>
+<script>
+function loadDomain() {
+  var display = document.getElementById("display-domain");
+  display.innerHTML = document.domain;
+}
+
+function GotoHomePage(){
+  var port = (window.location.port == "") ? "" : ":"+window.location.port;
+  window.location.href = document.location.protocol + '//' +  document.domain + port;
+}
+
+</script>
 </head>
 <body onload="javascript:loadDomain();">
 <!-- Error Page Content -->
