@@ -24,3 +24,5 @@ Easy to use, professional error pages to replace the plaintext error pages that 
 * 504
 * Maintenance
 * 429 (rate limit)
+* 495 (ssl error)
+* 496 (ssl error)
