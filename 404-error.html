@@ -41,8 +41,7 @@ body {
 .orange {color:#f0ad4e;}
 .red {color:#d9534f;}
 </style>
-<script src="javascript/shared.js"></script>
-</head>
+<script src="js/shared.js"></script></head>
 <body onload="javascript:loadDomain();">
 <!-- Error Page Content -->
 <div class="container">
@@ -50,7 +49,7 @@ body {
   <div class="jumbotron">
     <h1><i class="fa fa-frown-o red"></i> 404 Not Found</h1>
     <p class="lead">We couldn't find what you're looking for on <em><span id="display-domain"></span></em>.</p>
-    <p><a onclick="javascript:document.location.reload(true);" class="btn btn-default btn-lg"><span class="green">Take Me To The Homepage</span></a>
+    <p><a onclick="GotoHomePage();" class="btn btn-default btn-lg"><span class="green">Take Me To The Homepage</span></a>
     </p>
   </div>
 </div>
