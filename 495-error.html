@@ -45,11 +45,20 @@ body {
 function loadDomain() {
   var display = document.getElementById("display-domain");
   display.innerHTML = document.domain;
+  AddCID();
 }
 
 function GotoHomePage(){
   var port = (window.location.port == "") ? "" : ":"+window.location.port;
   window.location.href = document.location.protocol + '//' +  document.domain + port;
+}
+
+function AddCID (){
+  var cid = document.getElementById('cid').value;
+  document.getElementById('connectionid').innerHTML = cid;
+  if(cid !== "_cid_"){
+    document.getElementById('connectionidcontainer').className="text-muted";
+  }
 }
 
 </script>

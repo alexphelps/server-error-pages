@@ -45,11 +45,20 @@ body {
 function loadDomain() {
   var display = document.getElementById("display-domain");
   display.innerHTML = document.domain;
+  AddCID();
 }
 
 function GotoHomePage(){
   var port = (window.location.port == "") ? "" : ":"+window.location.port;
   window.location.href = document.location.protocol + '//' +  document.domain + port;
+}
+
+function AddCID (){
+  var cid = document.getElementById('cid').value;
+  document.getElementById('connectionid').innerHTML = cid;
+  if(cid !== "_cid_"){
+    document.getElementById('connectionidcontainer').className="text-muted";
+  }
 }
 
 </script>
@@ -63,9 +72,8 @@ function GotoHomePage(){
 <div class="jumbotron">
   <h1><i class="fa fa-ban red"></i> 403 Forbidden</h1>
   <p class="lead">Sorry! You don't have access permissions for that on <em><span id="display-domain"></span></em>.</p>
-    <p><a onclick="GotoHomePage();" class="btn btn-default btn-lg green">Take Me To The Homepage</a>
-
-    </p>
+    <p><a onclick="GotoHomePage();" class="btn btn-default btn-lg green">Take Me To The Homepage</a></p>
+      <cite id="connectionidcontainer" title="Source Title" class="text-muted hidden"> Connection ID: <span id="connectionid"></span></cite>
 </div>
 </div>
 <div class="container">
