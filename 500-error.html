@@ -56,7 +56,7 @@ function GotoHomePage(){
 function AddCID (){
   var cid = document.getElementById('cid').value;
   document.getElementById('connectionid').innerHTML = cid;
-  if(cid !== "_cid_"){
+  if(cid.length > 6){
     document.getElementById('connectionidcontainer').className="text-muted";
   }
 }
