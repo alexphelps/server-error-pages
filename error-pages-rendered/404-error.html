@@ -41,42 +41,7 @@ body {
 .orange {color:#f0ad4e;}
 .red {color:#d9534f;}
 </style>
-<script>
 
-
-function loadDomain() {
-  var display = document.getElementById("display-domain");
-  display.innerHTML = document.domain;
-
-}
-
-function GotoHomePage(){
-  var port = (window.location.port == "") ? "" : ":"+window.location.port;
-  window.location.href = document.location.protocol + '//' +  document.domain + port;
-}
-
-function AddCID (){
-  var cid = document.getElementById('cid').value;
-  document.getElementById('connectionid').innerHTML = cid;
-  if(cid.length > 6){
-    document.getElementById('connectionidcontainer').className="text-muted";
-  }
-}
-function IsUP (){
-  var element = document.getElementById('isup');
-  if(element){
-    element.href = "http://isup.me/" + window.location.hostname;
-  }
-}
-
-window.onload =  function (){
-  loadDomain();
-  AddCID();
-  IsUP();
-};
-
-
-</script>
 </head>
 <body >
   <input id="uuid" class="hidden" value="_uuid_" />
@@ -114,5 +79,40 @@ window.onload =  function (){
     </div>
   </div>
 </div>
+
+<script>
+
+
+function loadDomain() {
+  var display = document.getElementById("display-domain");
+  display.innerHTML = document.domain;
+}
+
+function GotoHomePage(){
+  var port = (window.location.port == "") ? "" : ":"+window.location.port;
+  window.location.href = document.location.protocol + '//' +  document.domain + port;
+}
+
+function AddCID (){
+  var cid = document.getElementById('cid').value;
+  document.getElementById('connectionid').innerHTML = cid;
+  if(cid.length > 6){
+    document.getElementById('connectionidcontainer').className="text-muted";
+  }
+}
+
+function IsUP (){
+  var element = document.getElementById('isup');
+  if(element){
+    element.href = "http://isup.me/" + window.location.hostname;
+  }
+}
+
+window.onload =  function (){
+  loadDomain();
+  AddCID();
+  IsUP();
+};
+</script>
 </body>
 </html>

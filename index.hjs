@@ -48,31 +48,36 @@
     <div class="container">
       <div class="jumbotron">
         <h1><i class="fa fa-search"></i>Server Error Pages</h1>
-        <h3>Lýsing...</h3>
-        <p class="lead">Betri lysing .. </p>
-          <p>
-            <a {{button.action}} class="btn btn-default btn-lg green">btn..</a>
-          </p>
+        <h3>Smart error pages, ideal for proxy services</h3>
       </div>
     </div>
     <div class="container">
       <div class="body-content">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-4">
             <h2>Demo</h2>
             <ul>
               {{#pages}}
-                <li><a href="./{{code}}-error.html">{{code}} page</a></li>
+                <li><i class="{{header.class}}"></i><a href="./{{code}}-error.html" data-toggle="tooltip" data-placement="right" title="{{title}}" > {{code}} page</a></li>
               {{/pages}}
             </ul>
           </div>
-          <div class="col-md-6">
-            <h2>What can I do?</h2>
-            <p class="lead">If you're a site vistor</p>
-            {{#info.description.visitor.isup}}<p><a id="isup" href="#" >Check to see if this website down for everyone or just you.</a></p>{{/info.description.visitor.isup}}
-            <p>{{info.description.visitor.text}}</p>
-            <p class="lead">If you're the site owner</p>
-            <p>{{info.description.owner.text}}</p>
+          <div class="col-md-8">
+            <p>Easy to use, professional error pages to replace the plaintext error pages that come with any server software like Nginx or Apache</p>
+            <p><strong>Quick Details</strong></p>
+            <ul>
+              <li>Unbranded and generic informational text for the user </li>
+              <li>Single HTML files, no directory structure required </li>
+              <li>Javascript to get the current domain and for optional LUA variables </li>
+              <li>Based on Bootstrap 3 </li>
+              <li>Uses Bootstrap CDN from NetDNA </li>
+              <li>Uses Fontawesome CDN from NetDNA </li>
+              <li>HTML5 Validated </li>
+              <li>Isup.me integration on network error pages (502 & 504) for the user to check if the error is just for them </li>
+              <li>Minimal javascript, no jquery no bootstrap javascript. </li>
+              <li>Template for easy edit, and script for create templates </li>
+              <li>NGINX quick start config </li>
+            </ul>
          </div>
         </div>
       </div>
@@ -82,38 +87,12 @@
         <p><small>Hosted on GitHub Pages</small></p>
       </footer>
     </div>
-    <!--<div class="wrapper">
-      <header>
-        <h1>Server-error-pages</h1>
-        <p>Easy to use, professional error pages to replace the plaintext error pages that come with any server software like Nginx or Apache</p>
-
-        <p class="view"><a href="https://github.com/agustik/Server-Error-Pages">View the Project on GitHub <small>alexphelps/Server-Error-Pages</small></a></p>
-
-      </header>
-      <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to Server Error Pages</h3>
-        <p>Easy to use, professional error pages to replace the plaintext error pages that come with any server software like Nginx or Apache</p>
-        <p><strong>Quick Details</strong></p>
-        <ul>
-          <li>Unbranded and generic informational text for the user</li>
-          <li>Single HTML files, no directory structure required</li>
-          <li>Javascript to get the current domain for content. </li>
-          <li>Based on Bootstrap 3</li>
-          <li>Uses Bootstrap CDN from NetDNA</li>
-          <li>Uses Fontawesome CDN from NetDNA</li>
-          </ul>
-        <p>Below, you'll find a list of all available error pages and links to a live demo.</p>
-        <p><strong>Error Pages Demos</strong></p>
-        <ul>
-          {{#pages}}
-            <li><a href="./{{code}}-error.html">{{code}} page</a></li>
-          {{/pages}}
-        </ul>
-
-      </section>
-
-    </div>-->
-
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+  </script>
   </body>
 </html>

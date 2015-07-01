@@ -54,7 +54,7 @@ body {
   {{#header.description}}<h3>{{header.description}}</h3>{{/header.description}}
   <p class="lead">{{description}}<em><span id="display-domain"></span></em>.</p>
     <p>
-      <a {{button.action}} class="btn btn-default btn-lg {{button.class}}">{{button.text}}</a>
+      <a {{button.action}} class="btn btn-default btn-lg green">{{button.text}}</a>
     </p>
     <p>
       <cite id="connectionidcontainer" title="Source Title" class="text-muted hidden"> Connection ID: <span id="connectionid"></span></cite>

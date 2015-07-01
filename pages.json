@@ -32,7 +32,6 @@
       "description" : "Sorry! You don't have access permissions for that on ",
       "button" : {
         "text" : "Take Me To The Homepage",
-        "class" : "green",
         "action" : "onclick='GotoHomePage();'"
       },
       "info" : {
@@ -60,7 +59,6 @@
       "description" : "We couldn't find what you're looking for on ",
       "button" : {
         "text" : "Take Me To The Homepage",
-        "class" : "green",
         "action" : "onclick='GotoHomePage();'"
       },
       "info" : {
@@ -88,7 +86,6 @@
       "description" : "Sorry! You don't have access permissions for that on ",
       "button" : {
         "text" : "Take Me To The Homepage",
-        "class" : "green",
         "action" : "onclick='GotoHomePage();'"
       },
       "info" : {
@@ -117,7 +114,6 @@
       "description" : "Sorry! You don't have access permissions for that on ",
       "button" : {
         "text" : "Try This Page Again",
-        "class" : "green",
         "action" : "href='javascript:document.location.reload(true);'"
       },
       "info" : {
@@ -146,7 +142,6 @@
       "description" : "Your browser sent to large headers for ",
       "button" : {
         "text" : "Take Me To The Homepage",
-        "class" : "green",
         "action" :  "onclick='GotoHomePage();'"
       },
       "info" : {
@@ -174,7 +169,6 @@
       "description" : "There is a issue with the client/server SSL/TLS client certificate config for ",
       "button" : {
         "text" : "Take Me To The Homepage",
-        "class" : "green",
         "action" :  "onclick='GotoHomePage();'"
       },
       "info" : {
@@ -202,7 +196,6 @@
       "description" : "Server is returning error because your browsers did not send a client certificate for ",
       "button" : {
         "text" : "Take Me To The Homepage",
-        "class" : "green",
         "action" :  "onclick='GotoHomePage();'"
       },
       "info" : {
@@ -230,7 +223,6 @@
       "description" : "The web server is returning an internal error for ",
       "button" : {
         "text" : "Take Me To The Homepage",
-        "class" : "green",
         "action" : "href='javascript:document.location.reload(true);'"
       },
       "info" : {
@@ -258,7 +250,6 @@
       "description" : "The does not support this operation for ",
       "button" : {
         "text" : "Take Me To The Homepage",
-        "class" : "green",
         "action" : "onclick='GotoHomePage();'"
       },
       "info" : {
@@ -286,7 +277,6 @@
       "description" : "The web server is returning an unexpected networking error for ",
       "button" : {
         "text" : "Take Me To The Homepage",
-        "class" : "green",
         "action" : "href='javascript:document.location.reload(true);'"
       },
       "info" : {
@@ -314,7 +304,6 @@
       "description" : "The web server is returning an unexpected temporary error for ",
       "button" : {
         "text" : "Take Me To The Homepage",
-        "class" : "green",
         "action" : "href='javascript:document.location.reload(true);'"
       },
       "info" : {
@@ -342,7 +331,6 @@
       "description" : "We are currently doing maintenance for ",
       "button" : {
         "text" : "Take Me To The Homepage",
-        "class" : "green",
         "action" : "href='javascript:document.location.reload(true);'"
       },
       "info" : {
