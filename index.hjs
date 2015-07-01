@@ -4,16 +4,85 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Server-error-pages</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <style>
+    /* Error Page Inline Styles */
+    body {
+      padding-top: 20px;
+    }
+    /* Layout */
+    .jumbotron {
+      font-size: 21px;
+      font-weight: 200;
+      line-height: 2.1428571435;
+      color: inherit;
+      padding: 10px 0px;
+    }
+    /* Everything but the jumbotron gets side spacing for mobile-first views */
+    .masthead, .body-content, {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    /* Main marketing message and sign up button */
+    .jumbotron {
+      text-align: center;
+      background-color: transparent;
+    }
+    .jumbotron .btn {
+      font-size: 21px;
+      padding: 14px 24px;
+    }
+    /* Colors */
+    .green {color:#5cb85c;}
+    .orange {color:#f0ad4e;}
+    .red {color:#d9534f;}
+    </style>
   </head>
   <body>
-    <div class="wrapper">
+    <div class="container">
+      <div class="jumbotron">
+        <h1><i class="fa fa-search"></i>Server Error Pages</h1>
+        <h3>Lýsing...</h3>
+        <p class="lead">Betri lysing .. </p>
+          <p>
+            <a {{button.action}} class="btn btn-default btn-lg green">btn..</a>
+          </p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="body-content">
+        <div class="row">
+          <div class="col-md-6">
+            <h2>Demo</h2>
+            <ul>
+              {{#pages}}
+                <li><a href="./{{code}}-error.html">{{code}} page</a></li>
+              {{/pages}}
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h2>What can I do?</h2>
+            <p class="lead">If you're a site vistor</p>
+            {{#info.description.visitor.isup}}<p><a id="isup" href="#" >Check to see if this website down for everyone or just you.</a></p>{{/info.description.visitor.isup}}
+            <p>{{info.description.visitor.text}}</p>
+            <p class="lead">If you're the site owner</p>
+            <p>{{info.description.owner.text}}</p>
+         </div>
+        </div>
+      </div>
+      <footer>
+        <p>This project is from <a href="https://github.com/alexphelps">alexphelps</a></p>
+        <p>This project is maintained by <a href="https://github.com/agustik">agustik</a></p>
+        <p><small>Hosted on GitHub Pages</small></p>
+      </footer>
+    </div>
+    <!--<div class="wrapper">
       <header>
         <h1>Server-error-pages</h1>
         <p>Easy to use, professional error pages to replace the plaintext error pages that come with any server software like Nginx or Apache</p>
@@ -43,12 +112,8 @@
         </ul>
 
       </section>
-      <footer>
-        <p>This project is from <a href="https://github.com/alexphelps">alexphelps</a></p>
-        <p>This project is maintained by <a href="https://github.com/agustik">agustik</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
+
+    </div>-->
 
   </body>
 </html>

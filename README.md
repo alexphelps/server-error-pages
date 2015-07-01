@@ -19,15 +19,15 @@ Easy to use, professional error pages to replace the plaintext error pages that 
 **Error Pages Included**
 * 403 (Forbidden)
 * 404 (Not found)
+* 429 (Rate limit)
+* 494 (Request headers to large)
+* 495 (SSL/TLS Certiticate error)
+* 496 (SSL/TLS Certiticate error)
 * 500 (Internal Server Error)
 * 501 (Not Implemented)
 * 502 (Bad Gateway)
 * 503 (Service Unavailable)
 * 504 (Gateway timed out)
-* 429 (Rate limit)
-* 494 (Request headers to large)
-* 495 (SSL/TLS Certiticate error)
-* 496 (SSL/TLS Certiticate error)
 * Maintenance
 
 **NGINX**

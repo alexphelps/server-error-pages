@@ -4,16 +4,96 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Server-error-pages</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <style>
+    /* Error Page Inline Styles */
+    body {
+      padding-top: 20px;
+    }
+    /* Layout */
+    .jumbotron {
+      font-size: 21px;
+      font-weight: 200;
+      line-height: 2.1428571435;
+      color: inherit;
+      padding: 10px 0px;
+    }
+    /* Everything but the jumbotron gets side spacing for mobile-first views */
+    .masthead, .body-content, {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    /* Main marketing message and sign up button */
+    .jumbotron {
+      text-align: center;
+      background-color: transparent;
+    }
+    .jumbotron .btn {
+      font-size: 21px;
+      padding: 14px 24px;
+    }
+    /* Colors */
+    .green {color:#5cb85c;}
+    .orange {color:#f0ad4e;}
+    .red {color:#d9534f;}
+    </style>
   </head>
   <body>
-    <div class="wrapper">
+    <div class="container">
+      <div class="jumbotron">
+        <h1><i class="fa fa-search"></i>Server Error Pages</h1>
+        <h3>Lýsing...</h3>
+        <p class="lead">Betri lysing .. </p>
+          <p>
+            <a  class="btn btn-default btn-lg green">btn..</a>
+          </p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="body-content">
+        <p><strong>Error Pages Demos</strong></p>
+        <ul>
+            <li><a href="./403-error.html">403 page</a></li>
+            <li><a href="./404-error.html">404 page</a></li>
+            <li><a href="./405-error.html">405 page</a></li>
+            <li><a href="./429-error.html">429 page</a></li>
+            <li><a href="./494-error.html">494 page</a></li>
+            <li><a href="./495-error.html">495 page</a></li>
+            <li><a href="./496-error.html">496 page</a></li>
+            <li><a href="./500-error.html">500 page</a></li>
+            <li><a href="./501-error.html">501 page</a></li>
+            <li><a href="./502-error.html">502 page</a></li>
+            <li><a href="./503-error.html">503 page</a></li>
+            <li><a href="./maintenance-error.html">maintenance page</a></li>
+        </ul>
+        <div class="row">
+          <div class="col-md-6">
+            <h2>What happened?</h2>
+            <p class="lead"></p>
+          </div>
+          <div class="col-md-6">
+            <h2>What can I do?</h2>
+            <p class="lead">If you're a site vistor</p>
+            
+            <p></p>
+            <p class="lead">If you're the site owner</p>
+            <p></p>
+         </div>
+        </div>
+      </div>
+      <footer>
+        <p>This project is from <a href="https://github.com/alexphelps">alexphelps</a></p>
+        <p>This project is maintained by <a href="https://github.com/agustik">agustik</a></p>
+        <p><small>Hosted on GitHub Pages</small></p>
+      </footer>
+    </div>
+    <!--<div class="wrapper">
       <header>
         <h1>Server-error-pages</h1>
         <p>Easy to use, professional error pages to replace the plaintext error pages that come with any server software like Nginx or Apache</p>
@@ -52,12 +132,8 @@
         </ul>
 
       </section>
-      <footer>
-        <p>This project is from <a href="https://github.com/alexphelps">alexphelps</a></p>
-        <p>This project is maintained by <a href="https://github.com/agustik">agustik</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
+
+    </div>-->
 
   </body>
 </html>

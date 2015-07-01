@@ -23,10 +23,10 @@ var tasks = {
     WriteErrorTemplates(template.error, config.pages, config.meta.location.pages);
   },
   index : function (){
-    RenderAndWrite(template.index, config.meta.location.pages + "index.html" , { list : ObjectToArray(config.pages) } );
+    RenderAndWrite(template.index, config.meta.location.pages + "index.html" , config);
   },
   nginx : function (){
-    RenderAndWrite(fs.readFileSync("nginx.hjs", "utf-8"), config.meta.location.config + "nginx-error.conf" , config );
+    RenderAndWrite(template.nginx, config.meta.location.config + "nginx-error.conf" , config );
   },
   all : function (){
     for (var e in this){
