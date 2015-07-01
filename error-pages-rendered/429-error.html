@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="494 Request Header Too Large">
+<meta name="description" content="403 Forbidden">
 <meta name="author" content="">
-<title>494 Request Header Too Large</title>
+<title>Slow Down</title>
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -42,10 +42,12 @@ body {
 .red {color:#d9534f;}
 </style>
 <script>
+
+
 function loadDomain() {
   var display = document.getElementById("display-domain");
   display.innerHTML = document.domain;
-  AddCID();
+
 }
 
 function GotoHomePage(){
@@ -60,40 +62,54 @@ function AddCID (){
     document.getElementById('connectionidcontainer').className="text-muted";
   }
 }
+function IsUP (){
+  var element = document.getElementById('isup');
+  if(element){
+    element.href = "http://isup.me/" + window.location.hostname;
+  }
+}
+
+window.onload =  function (){
+  loadDomain();
+  AddCID();
+  IsUP();
+};
+
 
 </script>
 </head>
-
-
-<body onload="javascript:loadDomain();">
+<body >
   <input id="uuid" class="hidden" value="_uuid_" />
   <input id="cid" class="hidden" value="_cid_" />
+
 <!-- Error Page Content -->
 <div class="container">
 <div class="jumbotron">
-  <h1><i class="fa fa-ban red"></i> 494 Request Header Too Large</h1>
-  <p class="lead">Your browser sent to large headers for <em><span id="display-domain"></span></em>.</p>
+  <h1><i class="fa fa-dashboard red"></i> Slow Down</h1>
+  <h3>Rate Limit Exceeded.</h3>
+  <p class="lead">Sorry! You don&#39;t have access permissions for that on <em><span id="display-domain"></span></em>.</p>
     <p>
-      <a onclick="GotoHomePage();" class="btn btn-default btn-lg green">Take Me To The Homepage</a>
+      <a href=&#39;javascript:document.location.reload(true);&#39; class="btn btn-default btn-lg green">Try This Page Again</a>
     </p>
     <p>
       <cite id="connectionidcontainer" title="Source Title" class="text-muted hidden"> Connection ID: <span id="connectionid"></span></cite>
     </p>
-  </div>
+</div>
 </div>
 <div class="container">
   <div class="body-content">
     <div class="row">
       <div class="col-md-6">
         <h2>What happened?</h2>
-        <p class="lead">A 494 error status indicates that the browser sent to large headers</p>
+        <p class="lead">This error means you have exceeded the request rate limit for the the web server you are accessing. Rate Limit Thersholds are set higher than a human browsing this site should be able to reach and mostly for protection against automated requests and attacks.</p>
       </div>
       <div class="col-md-6">
         <h2>What can I do?</h2>
         <p class="lead">If you're a site vistor</p>
-        <p>Please use your browsers back button and check that you're in the right place. If you need immediate assistance, please send us an email instead.</p>
+        
+        <p>The best thing to do is to slow down with your requests and try again in a few minutes. We apologize for any inconvenience.</p>
         <p class="lead">If you're the site owner</p>
-         <p>Please check that you're in the right place and get in touch with your website provider if you believe this to be an error.</p>
+        <p>This error is mostly likely very brief, the best thing to do is to check back in a few minutes and everything will probably be working normal agian. If the error persists, contact your website host.</p>
      </div>
     </div>
   </div>

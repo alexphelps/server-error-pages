@@ -1,0 +1,54 @@
+# NGINX config
+
+proxy_intercept_errors on; # Intercept errors, and return this error pages
+
+{{#config.limit_req_status}}
+limit_req_status {{config.limit_req_status}}; ## Standard for rate limit
+{{/config.limit_req_status}}
+
+
+{{#list}}
+  # Error page {{code}}
+  error_page {{code}} = {{config.location_internal}}{{code}}-error.html;
+{{/list}}
+
+
+
+# Location for internal errors.
+location {{location_virtual}} {
+  root {{root}}
+  internal;
+
+  {{#config.lua}}
+  # Checks is CID is set, if not then set it.
+  # CID is then logged in my log file, variable $cid is available everywhere
+
+  # Also create UUID for every request, and log it.
+
+  # The variables is then injected into server error pages and javascript can then access them
+  # there is more than than just lua to get this to work, i might upload a sample
+
+  ## Lua inline config
+    {{#config.body_filter_by_lua}}
+      body_filter_by_lua '
+        {{config.body_filter_by_lua}}
+      ';
+    {{/config.body_filter_by_lua}}
+
+    ## Include lua file
+    {{#config.body_filter_by_lua_file}}
+      body_filter_by_lua_file {{config.body_filter_by_lua_file}};
+    {{/config.body_filter_by_lua_file}}
+
+
+    {{#config.header_filter_by_lua}}
+      header_filter_by_lua '
+        {{config.header_filter_by_lua}}
+      ';
+    {{/config.header_filter_by_lua}}
+
+    {{#config.header_filter_by_lua_file}}
+      header_filter_by_lua_file {{config.header_filter_by_lua_file}};
+    {{/config.header_filter_by_lua_file}}
+  {{/config.lua}}
+}

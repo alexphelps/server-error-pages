@@ -1,0 +1,363 @@
+{
+  "meta" : {
+    "version" : "0.0.1",
+    "template" : {
+      "index" : "index.hjs",
+      "error" : "error.hjs",
+      "nginx" : "nginx.hjs"
+    },
+    "location" : {
+       "pages" : "error-pages-rendered\\",
+       "config" : "config-rendered\\"
+      }
+  },
+  "config" : {
+    "nginx" : {
+      "lua" : true,
+      "limit_req_status" : 429,
+      "location_virtual" : "/server-error-pages/",
+      "location_internal" : "/var/www/",
+      "body_filter_by_lua" : "if ngx.var.uuid == nil then\n \tngx.var.uuid = uuid4.getUUID()\n end\n ngx.arg[1] =  ngx.arg[1].gsub(ngx.arg[1], \"_uuid_\", ngx.var.uuid) \n ngx.arg[1] =  ngx.arg[1].gsub(ngx.arg[1], \"_cid_\", ngx.var.cid) \n"
+    }
+  },
+  "pages" : [
+    {
+      "code" : 403,
+      "title" : "403 Forbidden",
+      "header" : {
+        "text" : "403 Forbidden",
+        "class" : "fa fa-ban red"
+      },
+      "description" : "Sorry! You don't have access permissions for that on ",
+      "button" : {
+        "text" : "Take Me To The Homepage",
+        "class" : "green",
+        "action" : "onclick='GotoHomePage();'"
+      },
+      "info" : {
+        "title" : {
+           "text": "A 403 error status indicates that you don't have permission to access the file or page. In general, web servers and websites have directories and files that are not open to the public web for security reasons."
+         },
+        "description" : {
+          "visitor" : {
+            "text" : "Please use your browsers back button and check that you're in the right place. If you need immediate assistance, please send us an email instead.",
+            "isup" : false
+          },
+          "owner" : {
+            "text" : "Please check that you're in the right place and get in touch with your website provider if you believe this to be an error."
+          }
+        }
+      }
+    },
+    {
+      "code" : 404,
+      "title" : "404 Not Found",
+      "header" : {
+        "text" : "404 Not Found",
+        "class" : "fa fa-search red"
+      },
+      "description" : "We couldn't find what you're looking for on ",
+      "button" : {
+        "text" : "Take Me To The Homepage",
+        "class" : "green",
+        "action" : "onclick='GotoHomePage();'"
+      },
+      "info" : {
+        "title" : {
+           "text": "A 404 error status implies that the file or page that you're looking for could not be found."
+         },
+        "description" : {
+          "visitor" : {
+            "text" : "Please use your browsers back button and check that you're in the right place. If you need immediate assistance, please send us an email instead.",
+            "isup" : false
+          },
+          "owner" : {
+            "text" : "Please check that you're in the right place and get in touch with your website provider if you believe this to be an error."
+          }
+        }
+      }
+    },
+    {
+      "code" : 405,
+      "title" : "405 Method Not Allowed",
+      "header" : {
+        "text" : "405 Method Not Allowed",
+        "class" : "fa fa-ban red"
+      },
+      "description" : "Sorry! You don't have access permissions for that on ",
+      "button" : {
+        "text" : "Take Me To The Homepage",
+        "class" : "green",
+        "action" : "onclick='GotoHomePage();'"
+      },
+      "info" : {
+        "title" : {
+           "text": "A request was made of a resource using a request method not supported by that resource; for example, using GET on a form which requires data to be presented via POST, or using using AJAX call on blocked AJAX."
+         },
+        "description" : {
+          "visitor" : {
+            "text" : "Please use your browsers back button and check that you're in the right place. If you need immediate assistance, please send us an email instead.",
+            "isup" : false
+          },
+          "owner" : {
+            "text" : "Please check that you're in the right place and get in touch with your website provider if you believe this to be an error."
+          }
+        }
+      }
+    },
+    {
+      "code" : 429,
+      "title" : "Slow Down",
+      "header" : {
+        "text" : "Slow Down",
+        "class" : "fa fa-dashboard red",
+        "description" : "Rate Limit Exceeded."
+      },
+      "description" : "Sorry! You don't have access permissions for that on ",
+      "button" : {
+        "text" : "Try This Page Again",
+        "class" : "green",
+        "action" : "href='javascript:document.location.reload(true);'"
+      },
+      "info" : {
+        "title" : {
+           "text": "This error means you have exceeded the request rate limit for the the web server you are accessing. Rate Limit Thersholds are set higher than a human browsing this site should be able to reach and mostly for protection against automated requests and attacks."
+         },
+        "description" : {
+          "visitor" : {
+            "text" : "The best thing to do is to slow down with your requests and try again in a few minutes. We apologize for any inconvenience.",
+            "isup" : false
+          },
+          "owner" : {
+            "text" : "This error is mostly likely very brief, the best thing to do is to check back in a few minutes and everything will probably be working normal agian. If the error persists, contact your website host."
+          }
+        }
+      }
+    },
+    {
+      "code" : 494,
+      "title" : "494 Request Header Too Large",
+      "header" : {
+        "text" : "494 Request Header Too Large",
+        "class" : "fa fa-file red",
+        "description" : "Rate Limit Exceeded."
+      },
+      "description" : "Your browser sent to large headers for ",
+      "button" : {
+        "text" : "Take Me To The Homepage",
+        "class" : "green",
+        "action" :  "onclick='GotoHomePage();'"
+      },
+      "info" : {
+        "title" : {
+           "text": "A 494 error status indicates that the browser sent to large headers."
+         },
+        "description" : {
+          "visitor" : {
+            "text" : "Please use your browsers back button and check that you're in the right place. If you need immediate assistance, please send us an email instead.",
+            "isup" : false
+          },
+          "owner" : {
+            "text" : "Please check that you're in the right place and get in touch with your website provider if you believe this to be an error."
+          }
+        }
+      }
+    },
+    {
+      "code" : 495,
+      "title" : "495 Certificate Error",
+      "header" : {
+        "text" : "495 Certificate Error",
+        "class" : "fa fa-code red"
+      },
+      "description" : "There is a issue with the client/server SSL/TLS client certificate config for ",
+      "button" : {
+        "text" : "Take Me To The Homepage",
+        "class" : "green",
+        "action" :  "onclick='GotoHomePage();'"
+      },
+      "info" : {
+        "title" : {
+           "text": "A 495 error status indicates that there was a SSL/TLS certificate error. Your browser or the server is not properly configured for certificate authentication."
+         },
+        "description" : {
+          "visitor" : {
+            "text" : "Please use your browsers back button and check that you're in the right place. If you need immediate assistance, please send us an email instead.",
+            "isup" : false
+          },
+          "owner" : {
+            "text" : "Please check that you're in the right place and get in touch with your website provider if you believe this to be an error."
+          }
+        }
+      }
+    },
+    {
+      "code" : 496,
+      "title" : "496 Certificate not sent",
+      "header" : {
+        "text" : "496 Certificate not sent",
+        "class" : "fa fa-exchange red"
+      },
+      "description" : "Server is returning error because your browsers did not send a client certificate for ",
+      "button" : {
+        "text" : "Take Me To The Homepage",
+        "class" : "green",
+        "action" :  "onclick='GotoHomePage();'"
+      },
+      "info" : {
+        "title" : {
+           "text": "A 496 error status indicates that there no client certificate sent for authentication."
+         },
+        "description" : {
+          "visitor" : {
+            "text" : "Please use your browsers back button and check that you're in the right place. If you need immediate assistance, please send us an email instead.",
+            "isup" : false
+          },
+          "owner" : {
+            "text" : "Please check that you're in the right place and get in touch with your website provider if you believe this to be an error."
+          }
+        }
+      }
+    },
+    {
+      "code" : 500,
+      "title" : "500 Internal Server Error",
+      "header" : {
+        "text" : "500 Internal Server Error",
+        "class" : "glyphicon glyphicon-fire red"
+      },
+      "description" : "The web server is returning an internal error for ",
+      "button" : {
+        "text" : "Take Me To The Homepage",
+        "class" : "green",
+        "action" : "href='javascript:document.location.reload(true);'"
+      },
+      "info" : {
+        "title" : {
+           "text": "A 500 error status implies there is a problem with the web server's software causing it to malfunction."
+         },
+        "description" : {
+          "visitor" : {
+            "text" : "Nothing you can do at the moment. If you need immediate assistance, please send us an email instead. We apologize for any inconvenience.",
+            "isup" : false
+          },
+          "owner" : {
+            "text" : "This error can only be fixed by server admins, please contact your website provider."
+          }
+        }
+      }
+    },
+    {
+      "code" : 501,
+      "title" : "501 Not Implemented",
+      "header" : {
+        "text" : "501 Not Implemented",
+        "class" : "glyphicon glyphicon-fire red"
+      },
+      "description" : "The does not support this operation for ",
+      "button" : {
+        "text" : "Take Me To The Homepage",
+        "class" : "green",
+        "action" : "onclick='GotoHomePage();'"
+      },
+      "info" : {
+        "title" : {
+           "text": "A 501 error status implies that you where doing somthing that is not supported by the webserver."
+         },
+        "description" : {
+          "visitor" : {
+            "text" : "Nothing you can do at the moment. If you need immediate assistance, please send us an email instead. We apologize for any inconvenience.",
+            "isup" : false
+          },
+          "owner" : {
+            "text" : "This error can only be fixed by server admins, please contact your website provider."
+          }
+        }
+      }
+    },
+    {
+      "code" : 502,
+      "title" : "502 Bad Gateway",
+      "header" : {
+        "text" : "502 Bad Gateway",
+        "class" : "fa fa-bolt orange"
+      },
+      "description" : "The web server is returning an unexpected networking error for ",
+      "button" : {
+        "text" : "Take Me To The Homepage",
+        "class" : "green",
+        "action" : "href='javascript:document.location.reload(true);'"
+      },
+      "info" : {
+        "title" : {
+           "text": "A 502 error status implies that that the server received an invalid response from an upstream server it accessed to fulfil the request."
+         },
+        "description" : {
+          "visitor" : {
+            "text" : "Also, clearing your browser cache and refreshing the page may clear this issue. If the problem persissts and you need immediate assistance, please send us an email instead.",
+            "isup" : true
+          },
+          "owner" : {
+            "text" : "Clearing your browser cache and refreshing the page may clear this issue. If the problem persissts and you need immediate assistance, please contact your website provider."
+          }
+        }
+      }
+    },
+    {
+      "code" : 503,
+      "title" : "503 Service Unavailable",
+      "header" : {
+        "text" : "503 Service Unavailable",
+        "class" : "fa fa-exclamation-triangle orange"
+      },
+      "description" : "The web server is returning an unexpected temporary error for ",
+      "button" : {
+        "text" : "Take Me To The Homepage",
+        "class" : "green",
+        "action" : "href='javascript:document.location.reload(true);'"
+      },
+      "info" : {
+        "title" : {
+           "text": "A 503 error status implies that this is a temporary condition due to a temporary overloading or maintenance of the server. This error is normally a brief temporary interuption."
+         },
+        "description" : {
+          "visitor" : {
+            "text" : "If you need immediate assistance, please send us an email instead. We apologize for any inconvenience.",
+            "isup" : false
+          },
+          "owner" : {
+            "text" : "This error is mostly likely very brief, the best thing to do is to check back in a few minutes and everything will probably be working normal agian."
+          }
+        }
+      }
+    },
+    {
+      "code" : "maintenance",
+      "title" : "Temporary Maintenance",
+      "header" : {
+        "text" : "Temporary Maintenance",
+        "class" : "fa fa-cogs green"
+      },
+      "description" : "We are currently doing maintenance for ",
+      "button" : {
+        "text" : "Take Me To The Homepage",
+        "class" : "green",
+        "action" : "href='javascript:document.location.reload(true);'"
+      },
+      "info" : {
+        "title" : {
+           "text": "Servers and websites need regular maintnance just like a car to keep them up and running smoothly."
+         },
+        "description" : {
+          "visitor" : {
+            "text" : "If you need immediate assistance, please send us an email instead. We apologize for any inconvenience.",
+            "isup" : false
+          },
+          "owner" : {
+            "text" : "The maintenance period will mostly likely be very brief, the best thing to do is to check back in a few minutes and everything will probably be working normal agian."
+          }
+        }
+      }
+    }
+  ]
+}

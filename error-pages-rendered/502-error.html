@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="504 Gateway Timeout">
+<meta name="description" content="403 Forbidden">
 <meta name="author" content="">
-<title>504 Gateway Timeout</title>
+<title>502 Bad Gateway</title>
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -42,10 +42,12 @@ body {
 .red {color:#d9534f;}
 </style>
 <script>
+
+
 function loadDomain() {
   var display = document.getElementById("display-domain");
   display.innerHTML = document.domain;
-  AddCID();
+
 }
 
 function GotoHomePage(){
@@ -60,46 +62,54 @@ function AddCID (){
     document.getElementById('connectionidcontainer').className="text-muted";
   }
 }
+function IsUP (){
+  var element = document.getElementById('isup');
+  if(element){
+    element.href = "http://isup.me/" + window.location.hostname;
+  }
+}
+
+window.onload =  function (){
+  loadDomain();
+  AddCID();
+  IsUP();
+};
+
+
 </script>
 </head>
-<body onload="javascript:loadDomain();">
+<body >
   <input id="uuid" class="hidden" value="_uuid_" />
   <input id="cid" class="hidden" value="_cid_" />
+
 <!-- Error Page Content -->
 <div class="container">
-  <!-- Jumbotron -->
-  <div class="jumbotron">
-    <h1><i class="fa fa-clock-o orange"></i> 504 Gateway Timeout</h1>
-    <p class="lead">The web server is returning an unexpected networking error for <em><span id="display-domain"></span></em>.</p>
+<div class="jumbotron">
+  <h1><i class="fa fa-bolt orange"></i> 502 Bad Gateway</h1>
+  
+  <p class="lead">The web server is returning an unexpected networking error for <em><span id="display-domain"></span></em>.</p>
     <p>
-      <a href="javascript:document.location.reload(true);" class="btn btn-default btn-lg text-center"><span class="text-success">Try This Page Again</span></a>
+      <a href=&#39;javascript:document.location.reload(true);&#39; class="btn btn-default btn-lg green">Take Me To The Homepage</a>
     </p>
     <p>
       <cite id="connectionidcontainer" title="Source Title" class="text-muted hidden"> Connection ID: <span id="connectionid"></span></cite>
     </p>
-  </div>
+</div>
 </div>
 <div class="container">
   <div class="body-content">
-
-    <!-- Example row of columns -->
     <div class="row">
       <div class="col-md-6">
         <h2>What happened?</h2>
-        <p class="lead">A 504 error status implies there is a slow IP communication problem between back-end servers attempting to fulfill this request.</p>
+        <p class="lead">A 502 error status implies that that the server received an invalid response from an upstream server it accessed to fulfil the request.</p>
       </div>
       <div class="col-md-6">
         <h2>What can I do?</h2>
         <p class="lead">If you're a site vistor</p>
-        <p><a onclick=javascript:checkSite();>Check to see if this website down for everyone or just you.</a>
-          <script type="text/javascript">
-          function checkSite(){
-              window.location = window.location.proto + '//' +  window.location.hostname;
-          }
-          </script></p>
+        <p><a id="isup" href="#" >Check to see if this website down for everyone or just you.</a></p>
         <p>Also, clearing your browser cache and refreshing the page may clear this issue. If the problem persissts and you need immediate assistance, please send us an email instead.</p>
         <p class="lead">If you're the site owner</p>
-         <p>Clearing your browser cache and refreshing the page may clear this issue. If the problem persissts and you need immediate assistance, please contact your website provider.</p>
+        <p>Clearing your browser cache and refreshing the page may clear this issue. If the problem persissts and you need immediate assistance, please contact your website provider.</p>
      </div>
     </div>
   </div>

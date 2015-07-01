@@ -1,0 +1,22 @@
+{
+  "name": "server-error-pages",
+  "version": "0.0.0",
+  "description": "Smart error pages for server, template engine",
+  "main": "render.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agustik/server-error-pages.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agustik/server-error-pages/issues"
+  },
+  "homepage": "https://github.com/agustik/server-error-pages",
+  "devDependencies": {
+    "hogan.js": "^3.0.2"
+  }
+}
