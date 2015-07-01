@@ -2,24 +2,24 @@
 
 proxy_intercept_errors on; # Intercept errors, and return this error pages
 
-{{#config.limit_req_status}}
-limit_req_status {{config.limit_req_status}}; ## Standard for rate limit
-{{/config.limit_req_status}}
+{{#config.nginx.limit_req_status}}
+limit_req_status {{config.nginx.limit_req_status}}; ## Standard for rate limit
+{{/config.nginx.limit_req_status}}
 
 
-{{#list}}
+{{#pages}}
   # Error page {{code}}
-  error_page {{code}} = {{config.location_internal}}{{code}}-error.html;
-{{/list}}
+  error_page {{code}} = {{config.nginx.location_internal}}{{code}}-error.html;
+{{/pages}}
 
 
 
 # Location for internal errors.
-location {{location_virtual}} {
-  root {{root}}
+location {{config.nginx.location}} {
+  root {{config.nginx.root}}
   internal;
 
-  {{#config.lua}}
+  {{#config.nginx.lua}}
   # Checks is CID is set, if not then set it.
   # CID is then logged in my log file, variable $cid is available everywhere
 
@@ -28,27 +28,27 @@ location {{location_virtual}} {
   # The variables is then injected into server error pages and javascript can then access them
   # there is more than than just lua to get this to work, i might upload a sample
 
-  ## Lua inline config
-    {{#config.body_filter_by_lua}}
+    {{#config.nginx.body_filter_by_lua}}
+      ## Lua inline config
       body_filter_by_lua '
-        {{config.body_filter_by_lua}}
+        {{config.nginx.body_filter_by_lua}}
       ';
-    {{/config.body_filter_by_lua}}
+    {{/config.nginx.body_filter_by_lua}}
 
-    ## Include lua file
-    {{#config.body_filter_by_lua_file}}
-      body_filter_by_lua_file {{config.body_filter_by_lua_file}};
-    {{/config.body_filter_by_lua_file}}
+    {{#config.nginx.body_filter_by_lua_file}}
+      ## Include lua file
+      body_filter_by_lua_file {{config.nginx.body_filter_by_lua_file}};
+    {{/config.nginx.body_filter_by_lua_file}}
 
 
-    {{#config.header_filter_by_lua}}
+    {{#config.nginx.header_filter_by_lua}}
       header_filter_by_lua '
-        {{config.header_filter_by_lua}}
+        {{config.nginx.header_filter_by_lua}}
       ';
-    {{/config.header_filter_by_lua}}
+    {{/config.nginx.header_filter_by_lua}}
 
-    {{#config.header_filter_by_lua_file}}
-      header_filter_by_lua_file {{config.header_filter_by_lua_file}};
-    {{/config.header_filter_by_lua_file}}
-  {{/config.lua}}
+    {{#config.nginx.header_filter_by_lua_file}}
+      header_filter_by_lua_file {{config.nginx.header_filter_by_lua_file}};
+    {{/config.nginx.header_filter_by_lua_file}}
+  {{/config.nginx.lua}}
 }

@@ -5,6 +5,8 @@ var fs = require('fs');
 
 var config = require('./pages.json');
 
+var colors = require('colors');
+
 var template = {};
 var page;
 
@@ -13,13 +15,43 @@ for (page in config.meta.template){
   template[page] = fs.readFileSync(config.meta.template[page],  'utf-8');
 }
 
+var tasks = {
+  init : function (){
 
+  },
+  error : function (){
+    WriteErrorTemplates(template.error, config.pages, config.meta.location.pages);
+  },
+  index : function (){
+    RenderAndWrite(template.index, config.meta.location.pages + "index.html" , { list : ObjectToArray(config.pages) } );
+  },
+  nginx : function (){
+    RenderAndWrite(fs.readFileSync("nginx.hjs", "utf-8"), config.meta.location.config + "nginx-error.conf" , config );
+  },
+  all : function (){
+    for (var e in this){
+      if(e !== "all" && e !== "init"){
+        console.log(e);
+        this[e]();
+      }
+    }
+  }
+};
 
-WriteErrorTemplates(template.error, config.pages, config.meta.location.pages);
+var cmd = process.argv[2];
 
-RenderAndWrite(template.index, config.meta.location.pages + "index.html" , { list : ObjectToArray(config.pages) } );
+if(cmd in tasks){
+  var str = "Running task: " + cmd;
+  console.log("Running task: ".green, cmd.grey);
+  tasks[cmd]();
+}else{
+  console.error('Not available function'.red);
+  console.log("available are : ");
+  for (var e in tasks){
+    console.log("\t", e.green);
+  }
+}
 
-RenderAndWrite(fs.readFileSync("nginx-test.hjs", "utf-8"), config.meta.location.config + "nginx-error.conf" , config );
 
 function WriteErrorTemplates(template, json, location){
   var code, i, value, html, name;
@@ -35,7 +67,8 @@ function WriteErrorTemplates(template, json, location){
 }
 
 function RenderAndWrite(template, location, object){
-  console.log('Writing template @ ' + location);
+  var str = 'Writing template @ ' + location;
+  console.log(str.green);
   var html = hogan
         .compile(template)
         .render(object);

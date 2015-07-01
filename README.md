@@ -6,13 +6,14 @@ Easy to use, professional error pages to replace the plaintext error pages that 
 **Quick Details**
 * Unbranded and generic informational text for the user
 * Single HTML files, no directory structure required
-* Javascript to get the current domain for content and redirect to domain root.
+* Javascript to get the current domain and for optional LUA variables
 * Based on Bootstrap 3
 * Uses Bootstrap CDN from NetDNA
 * Uses Fontawesome CDN from NetDNA
 * HTML5 Validated
 * Isup.me integration on network error pages (502 & 504) for the user to check if the error is just for them
 * Minimal javascript, no jquery no bootstrap javascript.
+* Template for easy edit, and script for create templates
 * NGINX quick start config
 
 **Error Pages Included**
@@ -30,4 +31,14 @@ Easy to use, professional error pages to replace the plaintext error pages that 
 * Maintenance
 
 **NGINX**
-Take a look at server-error-pages.conf
+* Take a look at config-rendered/nginx-error.conf
+
+**Getting started**
+* Clone
+* Copy error-pages-rendered to your server
+
+**Advanced usage**
+* clone
+* npm install
+* Edit pages.json
+* node render.js all

@@ -15,8 +15,9 @@
     "nginx" : {
       "lua" : true,
       "limit_req_status" : 429,
-      "location_virtual" : "/server-error-pages/",
-      "location_internal" : "/var/www/",
+      "location" : "/server-error-pages/",
+      "location_internal" : "/error-pages-rendered/",
+      "root" : "/var/www/",
       "body_filter_by_lua" : "if ngx.var.uuid == nil then\n \tngx.var.uuid = uuid4.getUUID()\n end\n ngx.arg[1] =  ngx.arg[1].gsub(ngx.arg[1], \"_uuid_\", ngx.var.uuid) \n ngx.arg[1] =  ngx.arg[1].gsub(ngx.arg[1], \"_cid_\", ngx.var.cid) \n"
     }
   },

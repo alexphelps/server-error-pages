@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/agustik/server-error-pages",
   "devDependencies": {
-    "hogan.js": "^3.0.2"
+    "hogan.js": "^3.0.2",
+    "colors": "^1.1.2"
   }
 }
