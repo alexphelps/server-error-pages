@@ -10,6 +10,9 @@ var colors = require('colors');
 var template = {};
 var page;
 
+var isWin = /^win/.test(process.platform),
+    separator = (isWin) ? '\\' : '/';
+
 // load all files into memory
 for (page in config.meta.template){
   template[page] = fs.readFileSync(config.meta.template[page],  'utf-8');
@@ -20,13 +23,13 @@ var tasks = {
 
   },
   error : function (){
-    WriteErrorTemplates(template.error, config.pages, config.meta.location.pages);
+    WriteErrorTemplates(template.error, config.pages, config.meta.location.pages + separator);
   },
   index : function (){
-    RenderAndWrite(template.index, config.meta.location.pages + "index.html" , config);
+    RenderAndWrite(template.index, config.meta.location.pages + separator +"index.html" , config);
   },
   nginx : function (){
-    RenderAndWrite(template.nginx, config.meta.location.config + "nginx-error.conf" , config );
+    RenderAndWrite(template.nginx, config.meta.location.config + separator + "nginx-error.conf" , config );
   },
   all : function (){
     for (var e in this){

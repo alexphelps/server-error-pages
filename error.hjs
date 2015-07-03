@@ -54,7 +54,7 @@ body {
   {{#header.description}}<h3>{{header.description}}</h3>{{/header.description}}
   <p class="lead">{{description}}<em><span id="display-domain"></span></em>.</p>
     <p>
-      <a {{button.action}} class="btn btn-default btn-lg green">{{button.text}}</a>
+      <a href="/" class="btn btn-default btn-lg green {{button.action}}">{{button.text}}</a>
     </p>
     <p>
       <cite id="connectionidcontainer" title="Source Title" class="text-muted hidden"> Connection ID: <span id="connectionid"></span></cite>
@@ -71,7 +71,7 @@ body {
       <div class="col-md-6">
         <h2>What can I do?</h2>
         <p class="lead">If you're a site vistor</p>
-        {{#info.description.visitor.isup}}<p><a id="isup" href="#" >Check to see if this website down for everyone or just you.</a></p>{{/info.description.visitor.isup}}
+        {{#info.description.visitor.isup}}<p><a class="isup" href="#" >Check to see if this website down for everyone or just you.</a></p>{{/info.description.visitor.isup}}
         <p>{{info.description.visitor.text}}</p>
         <p class="lead">If you're the site owner</p>
         <p>{{info.description.owner.text}}</p>
@@ -80,39 +80,53 @@ body {
   </div>
 </div>
 
-<script>
+<script charset="utf-8">
 
-
-function loadDomain() {
-  var display = document.getElementById("display-domain");
-  display.innerHTML = document.domain;
-}
-
-function GotoHomePage(){
-  var port = (window.location.port == "") ? "" : ":"+window.location.port;
-  window.location.href = document.location.protocol + '//' +  document.domain + port;
-}
-
-function AddCID (){
-  var cid = document.getElementById('cid').value;
-  document.getElementById('connectionid').innerHTML = cid;
-  if(cid.length > 6){
-    document.getElementById('connectionidcontainer').className="text-muted";
+var err = {
+  init : function (){
+    for (var e in this){
+      if(e !== "init"){
+        this[e]();
+      }
+    }
+  },
+  domain : function (){
+    var display = document.getElementById("display-domain");
+    display.innerHTML = document.domain;
+  },
+  reload : function (){
+    this.on('click','.reload', function(e){
+      e.preventDefault();
+        window.location.reload(true);
+      return false;
+    });
+  },
+  cid : function (){
+    var cid = document.getElementById('cid').value;
+    document.getElementById('connectionid').innerHTML = cid;
+    if(cid.length > 6){
+      document.getElementById('connectionidcontainer').className="text-muted";
+    }
+  },
+  isUp : function (){
+    this.on('click','.isup', function(e){
+        e.preventDefault();
+          window.location.href="http://isup.me/" + window.location.hostname;
+        return false;
+    });
+  },
+  on : function (events, querySelector, callback){
+    var element = document.querySelectorAll(querySelector);
+    for (var i = 0; i < element.length; i++ ){
+      element[i].addEventListener(events, callback);
+    }
   }
-}
-
-function IsUP (){
-  var element = document.getElementById('isup');
-  if(element){
-    element.href = "http://isup.me/" + window.location.hostname;
-  }
-}
+};
 
 window.onload =  function (){
-  loadDomain();
-  AddCID();
-  IsUP();
+  err.init();
 };
+
 </script>
 </body>
 </html>

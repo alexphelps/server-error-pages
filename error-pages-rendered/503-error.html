@@ -54,7 +54,7 @@ body {
   
   <p class="lead">The web server is returning an unexpected temporary error for <em><span id="display-domain"></span></em>.</p>
     <p>
-      <a href=&#39;javascript:document.location.reload(true);&#39; class="btn btn-default btn-lg green">Take Me To The Homepage</a>
+      <a href="/" class="btn btn-default btn-lg green reload">Try This Page Again</a>
     </p>
     <p>
       <cite id="connectionidcontainer" title="Source Title" class="text-muted hidden"> Connection ID: <span id="connectionid"></span></cite>
@@ -80,39 +80,53 @@ body {
   </div>
 </div>
 
-<script>
+<script charset="utf-8">
 
-
-function loadDomain() {
-  var display = document.getElementById("display-domain");
-  display.innerHTML = document.domain;
-}
-
-function GotoHomePage(){
-  var port = (window.location.port == "") ? "" : ":"+window.location.port;
-  window.location.href = document.location.protocol + '//' +  document.domain + port;
-}
-
-function AddCID (){
-  var cid = document.getElementById('cid').value;
-  document.getElementById('connectionid').innerHTML = cid;
-  if(cid.length > 6){
-    document.getElementById('connectionidcontainer').className="text-muted";
+var err = {
+  init : function (){
+    for (var e in this){
+      if(e !== "init"){
+        this[e]();
+      }
+    }
+  },
+  domain : function (){
+    var display = document.getElementById("display-domain");
+    display.innerHTML = document.domain;
+  },
+  reload : function (){
+    this.on('click','.reload', function(e){
+      e.preventDefault();
+        window.location.reload(true);
+      return false;
+    });
+  },
+  cid : function (){
+    var cid = document.getElementById('cid').value;
+    document.getElementById('connectionid').innerHTML = cid;
+    if(cid.length > 6){
+      document.getElementById('connectionidcontainer').className="text-muted";
+    }
+  },
+  isUp : function (){
+    this.on('click','.isup', function(e){
+        e.preventDefault();
+          window.location.href="http://isup.me/" + window.location.hostname;
+        return false;
+    });
+  },
+  on : function (events, querySelector, callback){
+    var element = document.querySelectorAll(querySelector);
+    for (var i = 0; i < element.length; i++ ){
+      element[i].addEventListener(events, callback);
+    }
   }
-}
-
-function IsUP (){
-  var element = document.getElementById('isup');
-  if(element){
-    element.href = "http://isup.me/" + window.location.hostname;
-  }
-}
+};
 
 window.onload =  function (){
-  loadDomain();
-  AddCID();
-  IsUP();
+  err.init();
 };
+
 </script>
 </body>
 </html>
