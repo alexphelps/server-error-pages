@@ -85,7 +85,7 @@ body {
 var err = {
   init : function (){
     for (var e in this){
-      if(e !== "init"){
+      if(e !== "init" ){
         this[e]();
       }
     }
@@ -95,7 +95,7 @@ var err = {
     display.innerHTML = document.domain;
   },
   reload : function (){
-    this.on('click','.reload', function(e){
+    on('click','.reload', function(e){
       e.preventDefault();
         window.location.reload(true);
       return false;
@@ -109,23 +109,23 @@ var err = {
     }
   },
   isUp : function (){
-    this.on('click','.isup', function(e){
+    on('click','.isup', function(e){
         e.preventDefault();
           window.location.href="http://isup.me/" + window.location.hostname;
         return false;
     });
   },
-  on : function (events, querySelector, callback){
-    var element = document.querySelectorAll(querySelector);
-    for (var i = 0; i < element.length; i++ ){
-      element[i].addEventListener(events, callback);
-    }
-  }
 };
 
-window.onload =  function (){
-  err.init();
-};
+function on(events, querySelector, callback){
+  var element = document.querySelectorAll(querySelector);
+  for (var i = 0; i < element.length; i++ ){
+    element[i].addEventListener(events, callback);
+  }
+}
+
+on('onload', 'body', err.init());
+
 
 </script>
 </body>
