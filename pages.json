@@ -7,7 +7,11 @@
       "nginx" : "nginx.hjs"
     },
     "location" : {
-       "pages" : "error-pages-rendered",
+       "pages" : {
+         "html" : "error-pages-rendered/html",
+         "json" : "error-pages-rendered/json",
+         "xml"  : "error-pages-rendered/xml"
+       },
        "config" : "config-rendered"
       }
   },
@@ -15,9 +19,9 @@
     "nginx" : {
       "lua" : true,
       "limit_req_status" : 429,
-      "location" : "/server-error-pages/",
-      "location_internal" : "/error-pages-rendered/",
-      "root" : "/var/www/",
+      "location" : "^/([0-9]{3})-error",
+      "location_internal" : "",
+      "root" : "/var/www/html/server-error-pages/$error_extension/",
       "body_filter_by_lua" : "if ngx.var.uuid == nil then\n \tngx.var.uuid = uuid4.getUUID()\n end\n ngx.arg[1] =  ngx.arg[1].gsub(ngx.arg[1], \"_uuid_\", ngx.var.uuid) \n ngx.arg[1] =  ngx.arg[1].gsub(ngx.arg[1], \"_cid_\", ngx.var.cid) \n"
     }
   },
