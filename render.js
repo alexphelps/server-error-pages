@@ -23,16 +23,16 @@ var tasks = {
 
   },
   error : function (){
-    WriteErrorTemplates(template.error, config.pages, config.meta.location.pages + separator);
+    WriteErrorTemplates(template.error, config.pages, config.meta.location.pages.html + '/' );
   },
   index : function (){
-    RenderAndWrite(template.index, config.meta.location.pages + separator +"index.html" , config);
+    RenderAndWrite(template.index, config.meta.location.pages.html + "/index.html" , config);
   },
   nginx : function (){
-    RenderAndWrite(template.nginx, config.meta.location.config + separator + "nginx-error.conf" , config );
+    RenderAndWrite(template.nginx, config.meta.location.config + "/nginx-error.conf" , ParseNginxConfig(config) );
   },
   json : function (){
-    WriteJson(config, config.meta.location.pages + '/json/' );
+    WriteJson(config, config.meta.location.pages.json);
   },
   all : function (){
     for (var e in this){
@@ -57,9 +57,33 @@ if(cmd in tasks){
     console.log("\t", e.green);
   }
 }
+function ParseNginxConfig (config){
+  var NGINX_CODES = [];
+  config.pages.forEach(function (page){
+    if (isNumber(page.code)){
+     NGINX_CODES.push(page);
+    }
+  });
 
-
+  config.pages = NGINX_CODES;
+  return config;
+}
+function softmkdir(dir){
+  if(!folderExist(dir)){
+    fs.mkdirSync(dir);
+  }
+}
+function folderExist(filePath){
+    try {
+        return fs.statSync(filePath).isDirectory();
+    } catch (err) {
+        return false;
+    }
+  return false;
+}
 function WriteErrorTemplates(template, json, location){
+  softmkdir(location);
+
   var code, i, value, html, name;
   for ( i=0; i<json.length; i++ ){
     value = json[i];
@@ -73,17 +97,22 @@ function WriteErrorTemplates(template, json, location){
 }
 
 function WriteJson(config, location){
-
+  softmkdir(location);
+  var name, filename;
   config.pages.forEach(function (obj){
     var json = {
       code : obj.code,
       message : obj.description,
-      info : obj.info.title
+      info : obj.info.title.text
     };
-
-
-    console.log(json, location)
-
+    if(isNumber(obj.code)){
+      name = obj.code + '-error.json';;
+    }else{
+      name = obj.code + ".json";
+    }
+    filename = location +'/'+ name;
+    var JsonString = JSON.stringify(json, null, 2);
+    fs.writeFileSync(filename, JsonString, 'utf-8');
   });
 
 }
