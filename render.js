@@ -31,6 +31,9 @@ var tasks = {
   nginx : function (){
     RenderAndWrite(template.nginx, config.meta.location.config + separator + "nginx-error.conf" , config );
   },
+  json : function (){
+    WriteJson(config, config.meta.location.pages + '/json/' );
+  },
   all : function (){
     for (var e in this){
       if(e !== "all" && e !== "init"){
@@ -67,6 +70,22 @@ function WriteErrorTemplates(template, json, location){
     }
    RenderAndWrite(template, location + name, value);
   }
+}
+
+function WriteJson(config, location){
+
+  config.pages.forEach(function (obj){
+    var json = {
+      code : obj.code,
+      message : obj.description,
+      info : obj.info.title
+    };
+
+
+    console.log(json, location)
+
+  });
+
 }
 
 function RenderAndWrite(template, location, object){
