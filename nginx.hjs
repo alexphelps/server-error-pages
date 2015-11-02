@@ -9,14 +9,20 @@ limit_req_status {{config.nginx.limit_req_status}}; ## Standard for rate limit
 
 {{#pages}}
   # Error page {{code}}
-  error_page {{code}} = {{config.nginx.location_internal}}{{code}}-error.html;
+  error_page {{code}} {{config.nginx.location_internal}}{{code}}-error.html;
 {{/pages}}
 
 
+  # Add this to nginx.conf
+  #  map $http_accept $error_extension {
+  #      default html;
+  #          ~application/json json;
+  #  }
+
 
 # Location for internal errors.
-location {{config.nginx.location}} {
-  root {{config.nginx.root}}
+location ~* "{{config.nginx.location}}" {
+  root {{config.nginx.root}};
   internal;
 
   {{#config.nginx.lua}}
