@@ -1,0 +1,8 @@
+title: Server-error-pages
+description: Easy to use, professional error pages to replace the plaintext error pages that come with any server software like Nginx or Apache
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-midnight
+
+gems:
+  - jekyll-mentions
