@@ -6,8 +6,7 @@ Easy to use, professional error pages to replace the plaintext error pages that 
 **Quick Details**
 * Unbranded and generic informational text for the user
 * Single HTML files, no directory structure required.
-* Uses Bootstrap 5 via CDN
-* Uses Bootstrap Icons via CDN
+* Bootstrap 5 and Bootstrap Icons via CDN
 
 **Error Pages Included**
 * [403](http://alexphelps.github.io/server-error-pages/403.html)
