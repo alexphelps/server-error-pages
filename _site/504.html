@@ -6,7 +6,6 @@
 <meta name="robots" content="noindex, nofollow">
 <title>504 Gateway Timeout</title>
 <meta name="description" content="504 Gateway Timeout">
-<!-- Bootstrap core CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -14,32 +13,28 @@
 <body class="py-5" onload="javascript:loadDomain();">
 <!-- Error Page Content -->
 <div class="container">
-    <div class="hero text-center my-5">
-        <h1 class="display-5 fw-bold"><i class="bi bi-clock-history text-warning mx-3"></i>504 Gateway Timeout</h1>
+    <div class="hero text-center my-4">
+        <h1 class="display-5"><i class="bi bi-clock-history text-warning mx-3"></i></h1>
+        <h1 class="display-5 fw-bold">504 Gateway Timeout</h1>
         <p class="lead">The web server is returning an unexpected networking error for <em><span id="display-domain"></span></em>.
         </p>
-        <p><a onclick=javascript:checkSite(); class="btn btn-outline-secondary btn-lg">Try This Page Again</a>
-            <script type="text/javascript">
-                function checkSite() {
-                    var currentSite = window.location.hostname;
-                    window.location = "http://" + currentSite;
-                }
-            </script>
-        </p>
+        <p><btn onclick=javascript:reloadPage(); class="btn btn-outline-success btn-lg">Try This Page Again</a></btn>
     </div>
 
-    <div class="content my-5">
-        <div class="row py-3">
+    <div class="content">
+        <div class="row  justify-content-center py-3">
             <div class="col-md-6">
-                <h2>What happened?</h2>
-                <p class="lead">A 504 error status implies there is a slow IP communication problem between back-end servers attempting to fulfill this request.</p>
-            </div>
-            <div class="col-md-6">
-                <h2>What can I do?</h2>
-                <p class="lead">If you're a site visitor</p>
-                <p>Also, clearing your browser cache and refreshing the page may clear this issue. If the problem persists and you need immediate assistance, please send us an email instead.</p>
-                <p class="lead">If you're the site owner</p>
-                <p>Clearing your browser cache and refreshing the page may clear this issue. If the problem persists and you need immediate assistance, please contact your website provider.</p>
+                <div class="my-5 p-5 card">
+                    <h3>What happened?</h3>
+                    <p class="fs-5">A 504 error status implies there is a slow IP communication problem between back-end servers attempting to fulfill this request.</p>
+                </div>
+                <div class="my-5 p-5 card">
+                    <h3>What can I do?</h3>
+                    <p class="fs-4">If you're a site visitor</p>
+                    <p>Also, clearing your browser cache and refreshing the page may clear this issue. If the problem persists and you need immediate assistance, please send us an email instead.</p>
+                    <p class="fs-4">If you're the site owner</p>
+                    <p>Clearing your browser cache and refreshing the page may clear this issue. If the problem persists and you need immediate assistance, please contact your website provider.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -49,12 +44,15 @@
         var display = document.getElementById("display-domain");
         display.innerHTML = document.domain;
     }
-    //javascript:document.location.reload(true);
-</script>
-<script type="text/javascript">
+    // CTA button actions
     function checkSite() {
-        var currentSite = window.location.hostname;
-        window.location = "https://downforeveryoneorjustme.com/" + currentSite;
+        window.location = "https://downforeveryoneorjustme.com/" + window.location.hostname;
+    }
+    function goToHomePage() {
+        window.location = '/';
+    }
+    function reloadPage() {
+        document.location.reload(true);
     }
 </script>
 </body>

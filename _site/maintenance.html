@@ -6,7 +6,6 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Temporary Maintenance</title>
 <meta name="description" content="Temporary Maintenance">
-<!-- Bootstrap core CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -14,32 +13,28 @@
 <body class="py-5" onload="javascript:loadDomain();">
 <!-- Error Page Content -->
 <div class="container">
-    <div class="hero text-center my-5">
-        <h1 class="display-5 fw-bold"><i class="bi bi-gear text-info mx-3"></i>Temporary Maintenance</h1>
+    <div class="hero text-center my-4">
+        <h1 class="display-5"><i class="bi bi-gear text-primary mx-3"></i></h1>
+        <h1 class="display-5 fw-bold">Temporary Maintenance</h1>
         <p class="lead">The web server is currently undergoing some maintenance for  <em><span id="display-domain"></span></em>.
         </p>
-        <p><a onclick=javascript:checkSite(); class="btn btn-outline-secondary btn-lg">Try This Page Again</a>
-            <script type="text/javascript">
-                function checkSite() {
-                    var currentSite = window.location.hostname;
-                    window.location = "http://" + currentSite;
-                }
-            </script>
-        </p>
+        <p><btn onclick=javascript:reloadPage(); class="btn btn-outline-success btn-lg">Try This Page Again</a></btn>
     </div>
 
-    <div class="content my-5">
-        <div class="row py-3">
+    <div class="content">
+        <div class="row  justify-content-center py-3">
             <div class="col-md-6">
-                <h2>What happened?</h2>
-                <p class="lead">Servers and websites need regular maintenance just like a car to keep them up and running smoothly.</p>
-            </div>
-            <div class="col-md-6">
-                <h2>What can I do?</h2>
-                <p class="lead">If you're a site visitor</p>
-                <p>If you need immediate assistance, please send us an email instead. We apologize for any inconvenience.</p>
-                <p class="lead">If you're the site owner</p>
-                <p>The maintenance period will mostly likely be very brief, the best thing to do is to check back in a few minutes and everything will probably be working normal again.</p>
+                <div class="my-5 p-5 card">
+                    <h3>What happened?</h3>
+                    <p class="fs-5">Servers and websites need regular maintenance just like a car to keep them up and running smoothly.</p>
+                </div>
+                <div class="my-5 p-5 card">
+                    <h3>What can I do?</h3>
+                    <p class="fs-4">If you're a site visitor</p>
+                    <p>If you need immediate assistance, please send us an email instead. We apologize for any inconvenience.</p>
+                    <p class="fs-4">If you're the site owner</p>
+                    <p>The maintenance period will mostly likely be very brief, the best thing to do is to check back in a few minutes and everything will probably be working normal again.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -49,12 +44,15 @@
         var display = document.getElementById("display-domain");
         display.innerHTML = document.domain;
     }
-    //javascript:document.location.reload(true);
-</script>
-<script type="text/javascript">
+    // CTA button actions
     function checkSite() {
-        var currentSite = window.location.hostname;
-        window.location = "https://downforeveryoneorjustme.com/" + currentSite;
+        window.location = "https://downforeveryoneorjustme.com/" + window.location.hostname;
+    }
+    function goToHomePage() {
+        window.location = '/';
+    }
+    function reloadPage() {
+        document.location.reload(true);
     }
 </script>
 </body>
