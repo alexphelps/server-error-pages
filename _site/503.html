@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>{{ page.title }}</title>
-<meta name="description" content="{{ page.title }}">
+<title>503 Service Unavailable</title>
+<meta name="description" content="503 Service Unavailable">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -14,11 +14,11 @@
 <!-- Error Page Content -->
 <div class="container">
     <div class="hero text-center my-4">
-        <h1 class="display-5"><i class="bi bi-{{ page.icon }} {{ page.icon_color }} mx-3"></i></h1>
-        <h1 class="display-5 fw-bold">{{page.title}}</h1>
-        <p class="lead">{{ page.sub_title }} <em><span id="display-domain"></span></em>.
+        <h1 class="display-5"><i class="bi bi-exclamation-diamond text-warning mx-3"></i></h1>
+        <h1 class="display-5 fw-bold">503 Service Unavailable</h1>
+        <p class="lead">The web server is returning an unexpected temporary error for <em><span id="display-domain"></span></em>.
         </p>
-        <p><btn onclick=javascript:{{ page.cta_action }}(); class="btn btn-outline-success btn-lg">{{ page.cta_text }}</a></btn>
+        <p><btn onclick=javascript:reloadPage(); class="btn btn-outline-success btn-lg">Try This Page Again</a></btn>
     </div>
 
     <div class="content">
@@ -26,14 +26,14 @@
             <div class="col-md-6">
                 <div class="my-5 p-5 card">
                     <h3>What happened?</h3>
-                    <p class="fs-5">{{ page.error_summary }}</p>
+                    <p class="fs-5">A 503 error status implies that this is a temporary condition due to a temporary overloading or maintenance of the server. This error is normally a brief temporary interruption.</p>
                 </div>
                 <div class="my-5 p-5 card">
                     <h3>What can I do?</h3>
                     <p class="fs-4">If you're a site visitor</p>
-                    <p>{{ page.action_site_visitor }}</p>
+                    <p>Nothing you can do at the moment. If you need immediate assistance, please send us an email instead. We apologize for any inconvenience.</p>
                     <p class="fs-4">If you're the site owner</p>
-                    <p>{{ page.action_site_owner }}</p>
+                    <p>This error is mostly likely very brief, the best thing to do is to check back in a few minutes and everything will probably be working normal again.</p>
                 </div>
             </div>
         </div>
